@@ -56,5 +56,5 @@ class TestOrderQueue(unittest.TestCase):
         self.assertEqual(len(watch_all_orders_in_queue()), 0)
 
 
-if __name__ == '__main__':
-    unittest.main()
+#if __name__ == '__main__':
+    #unittest.main()
