@@ -67,4 +67,5 @@ def menu() -> None:
             print("Invalid choice, please choose again.")
 
 
-menu()
+if __name__ == "__main__":
+    menu()

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite name="TestOrderQueue-20241019184352" tests="7" file=".py" time="0.014" timestamp="2024-10-19T18:43:52" failures="0" errors="0" skipped="1">
+		<testcase classname="TestOrderQueue" name="test_add_product_to_queue" time="0.003" timestamp="2024-10-19T18:43:52" file="Lab4\Test_main.py" line="11">
+			<system-out><![CDATA[Now queue is cleared
+Order: {'product_name': 'Apple', 'quantity': 5}, added to queue
+Current orders in queue: [{'product_name': 'Apple', 'quantity': 5}]
+]]></system-out>
+		</testcase>
+		<testcase classname="TestOrderQueue" name="test_add_product_to_queue_invalid_quantity" time="0.002" timestamp="2024-10-19T18:43:52" file="Lab4\Test_main.py" line="18">
+			<system-out><![CDATA[Now queue is cleared
+]]></system-out>
+		</testcase>
+		<testcase classname="TestOrderQueue" name="test_clear_orders" time="0.002" timestamp="2024-10-19T18:43:52" file="Lab4\Test_main.py" line="53">
+			<system-out><![CDATA[Now queue is cleared
+Order: {'product_name': 'Apple', 'quantity': 5}, added to queue
+Now queue is cleared
+Current orders in queue: []
+]]></system-out>
+		</testcase>
+		<testcase classname="TestOrderQueue" name="test_get_all_orders_in_queue" time="0.002" timestamp="2024-10-19T18:43:52" file="Lab4\Test_main.py" line="41">
+			<system-out><![CDATA[Now queue is cleared
+Order: {'product_name': 'Samsung', 'quantity': 5}, added to queue
+Order: {'product_name': 'Casio', 'quantity': 10}, added to queue
+Current orders in queue: [{'product_name': 'Samsung', 'quantity': 5}, {'product_name': 'Casio', 'quantity': 10}]
+]]></system-out>
+		</testcase>
+		<testcase classname="TestOrderQueue" name="test_get_first_product_from_queue" time="0.002" timestamp="2024-10-19T18:43:52" file="Lab4\Test_main.py" line="22">
+			<system-out><![CDATA[Now queue is cleared
+Order: {'product_name': 'Orange', 'quantity': 3}, added to queue
+Order: {'product_name': 'Lemon', 'quantity': 7}, added to queue
+Get product name: Orange
+Get product name: Lemon
+Current orders in queue: []
+]]></system-out>
+		</testcase>
+		<testcase classname="TestOrderQueue" name="test_get_first_product_from_queue_empty" time="0.001" timestamp="2024-10-19T18:43:52" file="Lab4\Test_main.py" line="31">
+			<system-out><![CDATA[Now queue is cleared
+Queue empty
+]]></system-out>
+		</testcase>
+		<testcase classname="TestOrderQueue" name="test_expected_failure_get_from_empty_queue" time="0.002" timestamp="2024-10-19T18:43:52" file="Lab4\Test_main.py" line="36">
+			<skipped type="XFAIL" message="expected failure: (&lt;class 'AssertionError'&gt;, AssertionError('ValueError not raised'), &lt;traceback object at 0x00000235C1D9DB80&gt;)"/>
+			<system-out><![CDATA[Now queue is cleared
+Queue empty
+]]></system-out>
+		</testcase>
+	</testsuite>
+</testsuites>
