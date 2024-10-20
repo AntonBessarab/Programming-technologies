@@ -7,36 +7,36 @@ pipeline {
             steps {
                 checkout scm
             }
-        } // stage Check scm
+        }
         stage('Build') {
             steps {
-                echo "Building ...${BUILD_NUMBER}"
+                echo "Building ... ${BUILD_NUMBER}"
                 echo "Build completed"
             }
-        } // stage Build
+        }
         stage('Test') {
             agent { 
                 docker { 
-                    image 'python:3.12'
-                    args '-u="root"' 
+                    image 'python:3.12' 
+                    args '-u root'
                 } 
             }
             steps {
-                sh 'apk add --update python3=3.12 py-pip'
-                sh 'pip install unittest-xml-reporting'
-                sh 'python3 Test_main.py'
+                sh 'python3 -m venv venv'
+                sh 'source venv/bin/activate && pip install unittest-xml-reporting'
+                sh 'source venv/bin/activate && python Test_main.py'
             }
             post {
                 always {
                     junit 'test-reports/*.xml'
                 }
                 success {
-                    echo "Application testing successfully completed"
+                    echo "Testing successful"
                 }
                 failure {
-                    echo "Oooppss!!! Tests failed!"
+                    echo "Tests failed"
                 }
             }
-        } // stage Test
-    } // stages
-} // pipeline
+        }
+    }
+}
