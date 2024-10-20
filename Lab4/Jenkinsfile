@@ -7,7 +7,7 @@ pipeline {
             steps {
                 checkout scm
             }
-        } // stage Build
+        } // stage Check scm
         stage('Build') {
             steps {
                 echo "Building ...${BUILD_NUMBER}"
@@ -15,14 +15,16 @@ pipeline {
             }
         } // stage Build
         stage('Test') {
-            agent { docker { image 'alpine'
-                args '-u="root"' }
+            agent { 
+                docker { 
+                    image 'alpine'
+                    args '-u="root"' 
+                } 
             }
             steps {
-                sh 'apk add --update python3 py-pip'
-                sh 'pip install Flask'
-                sh 'pip install xmlrunner'
-                sh 'python3 app_tests.py'
+                sh 'apk add --update python3=3.12 py-pip'
+                sh 'pip install unittest-xml-reporting'
+                sh 'python3 Test_main.py'
             }
             post {
                 always {
