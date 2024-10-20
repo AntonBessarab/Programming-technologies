@@ -7,28 +7,30 @@ pipeline {
             steps {
                 checkout scm
             }
-        } // stage Check scm
+        } 
         stage('Build') {
             steps {
                 echo "Building ...${BUILD_NUMBER}"
                 echo "Build completed"
             }
-        } // stage Build
+        } 
         stage('Test') {
             agent { 
                 docker { 
-                    image 'python:3.12'
-                    args '-u="root"' 
+                    image 'python:3.12-alpine' 
+                    args '-u="root"'
                 } 
             }
             steps {
-                sh 'apk add --update python3=3.12 py-pip'
+                sh 'apk add --no-cache py3-pip'
                 sh 'pip install unittest-xml-reporting'
-                sh 'python3 Test_main.py'
+
+                sh 'python lab4/test_pawnshop.py' 
             }
             post {
                 always {
-                    junit 'test-reports/*.xml'
+                    // Архівуємо звіти про тести
+                    junit 'lab4/results.xml'
                 }
                 success {
                     echo "Application testing successfully completed"
@@ -37,6 +39,6 @@ pipeline {
                     echo "Oooppss!!! Tests failed!"
                 }
             }
-        } // stage Test
-    } // stages
-} // pipeline
+        }
+    } 
+}
