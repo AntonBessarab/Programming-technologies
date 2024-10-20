@@ -25,12 +25,11 @@ pipeline {
                 sh 'apk add --no-cache py3-pip'
                 sh 'pip install unittest-xml-reporting'
 
-                sh 'python lab4/test_pawnshop.py' 
+                sh 'python Test_main.py' 
             }
             post {
                 always {
-                    // Архівуємо звіти про тести
-                    junit 'lab4/results.xml'
+                    junit 'test-reports.xml'
                 }
                 success {
                     echo "Application testing successfully completed"
