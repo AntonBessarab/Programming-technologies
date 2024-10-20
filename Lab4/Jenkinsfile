@@ -25,11 +25,11 @@ pipeline {
                 sh 'apk add --no-cache py3-pip'
                 sh 'pip install unittest-xml-reporting'
 
-                sh 'python Test_main.py' 
+                sh 'python Lab4/Test_main.py' 
             }
             post {
                 always {
-                    junit 'test-reports.xml'
+                    junit 'Lab4/test-reports.xml'
                 }
                 success {
                     echo "Application testing successfully completed"
