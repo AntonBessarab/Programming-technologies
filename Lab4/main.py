@@ -47,7 +47,7 @@ def menu() -> None:
         print("3. See all order")
         print("4. Clear orders queue")
         print("5. Exit")
-        print("Github-hook test3")
+        print("Test SCM changes")
 
         choice = input("Choose an option (1-5): ")
 
