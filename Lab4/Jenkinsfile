@@ -14,17 +14,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building ...${BUILD_NUMBER}"
+                // Створення Docker-образу
+                sh 'docker build -t antonbessarab/programing_technology:${BUILD_NUMBER} .'
                 echo "Build completed"
-            }
-        }
-        stage('Push') {
-            agent any
-            steps {
-                // Логін до Docker Hub
-                sh 'echo $DOCKER_CREDS_PSW | docker login -u $DOCKER_CREDS_USR --password-stdin'
-                // Завантаження Docker-образу на Docker Hub
-                sh 'docker push antonbessarab/programing_technology:${BUILD_NUMBER}'
-                echo "Docker image successfully pushed to Docker Hub"
             }
         }
         stage('Test') {
@@ -50,6 +42,16 @@ pipeline {
                 failure {
                     echo "Oooppss!!! Tests failed!"
                 }
+            }
+        }
+            stage('Push') {
+            agent any
+            steps {
+                // Логін до Docker Hub
+                sh 'echo $DOCKER_CREDS_PSW | docker login -u $DOCKER_CREDS_USR --password-stdin'
+                // Завантаження Docker-образу на Docker Hub
+                sh 'docker push antonbessarab/programing_technology:${BUILD_NUMBER}'
+                echo "Docker image successfully pushed to Docker Hub"
             }
         }
     } 
