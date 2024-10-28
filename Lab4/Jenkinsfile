@@ -53,10 +53,6 @@ pipeline {
                 sh 'docker push antonbessarab/programing_technology:${BUILD_NUMBER}'
                 echo "Docker image successfully pushed to Docker Hub"
             }
-            post {
-                always {
-                    sh 'docker logout' // Вихід з Docker Hub
-            }
         }
     } 
 }
