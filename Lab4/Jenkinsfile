@@ -42,10 +42,9 @@ pipeline {
         stage('Build Docker Image') {
             agent any
             steps {
-                sh 'ls -la'
                 script {
                     def imageName = "antonbessarab/programing_technology:${env.BUILD_NUMBER}"
-                    sh "docker build -t ${imageName} ."
+                    sh "docker build -t ${imageName} -f Lab4/Dockerfile Lab4"
                 }
             }
         }
