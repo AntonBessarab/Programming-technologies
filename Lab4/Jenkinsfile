@@ -8,9 +8,10 @@ pipeline {
         stage('Check scm') {
             agent any
             steps {
-                checkout scm
-            }
-        } 
+                script {
+                    checkout scm
+                }
+            } 
         stage('Build') {
             steps {
                 agent any
