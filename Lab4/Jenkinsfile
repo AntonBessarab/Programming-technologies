@@ -8,13 +8,11 @@ pipeline {
         stage('Check scm') {
             agent any
             steps {
-                script {
-                    checkout scm
-                }
-            } 
+                checkout scm
+            }
+        } 
         stage('Build') {
             steps {
-                agent any
                 echo "Building ...${BUILD_NUMBER}"
                 // Створення Docker-образу
                 sh 'docker build -t antonbessarab/programing_technology:${BUILD_NUMBER} .'
@@ -55,6 +53,7 @@ pipeline {
                 sh 'docker push antonbessarab/programing_technology:${BUILD_NUMBER}'
                 echo "Docker image successfully pushed to Docker Hub"
             }
+            
         }
     } 
 }
