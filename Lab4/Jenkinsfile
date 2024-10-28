@@ -13,7 +13,7 @@ pipeline {
                 echo "Building ...${BUILD_NUMBER}"
                 echo "Build completed"
             }
-        }
+        } 
         stage('Test') {
             agent { 
                 docker { 
@@ -38,7 +38,6 @@ pipeline {
                     echo "Oooppss!!! Tests failed!"
                 }
             }
-        }
         }
     } 
 }
