@@ -1,9 +1,6 @@
 pipeline {
     options { timestamps() }
     agent none
-    environment{
-        DOCKER_CREDS = credentials('docker_hub')
-    }
     stages {
         stage('Check scm') {
             agent any
