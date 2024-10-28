@@ -42,6 +42,7 @@ pipeline {
         stage('Build Docker Image') {
             agent any
             steps {
+                sh 'ls -la'
                 script {
                     def imageName = "antonbessarab/programing_technology:${env.BUILD_NUMBER}"
                     sh "docker build -t ${imageName} ."
