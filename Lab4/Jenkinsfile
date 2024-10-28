@@ -13,6 +13,7 @@ pipeline {
         } 
         stage('Build') {
             steps {
+                agent any
                 echo "Building ...${BUILD_NUMBER}"
                 // Створення Docker-образу
                 sh 'docker build -t antonbessarab/programing_technology:${BUILD_NUMBER} .'
