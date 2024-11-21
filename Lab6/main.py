@@ -67,4 +67,4 @@ def menu() -> None:
             print("Invalid choice, please choose again.")
 
 
-#menu()
+menu()
