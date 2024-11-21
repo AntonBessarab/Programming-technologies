@@ -19,7 +19,7 @@ def add_product_to_queue(name, quantity) -> dict:
 def get_first_product_from_queue() -> dict:
     if not order_queue.empty():
         order = order_queue.get()
-        print(f"Get product name: {order["product_name"]}")
+        print(f"Get product name: {order['product_name']}")
         return order
     else:
         print("Queue empty")
