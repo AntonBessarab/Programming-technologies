@@ -6,14 +6,15 @@ terraform {
       version = "~> 5.0"
     }
   }
-}
-
-backend "s3" {
+  backend "s3" {
     bucket         = "bessarab-tf-state"
     key            = "terraform.tfstate"
     region         = "eu-central-1"
     dynamodb_table = "lab6-bessarab-tf-lockid"
   }
+}
+
+
 
 
 # Configure the AWS provider
