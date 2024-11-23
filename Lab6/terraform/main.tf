@@ -8,6 +8,14 @@ terraform {
   }
 }
 
+backend "s3" {
+    bucket         = "bessarab-tf-state"
+    key            = "terraform.tfstate"
+    region         = "eu-central-1"
+    dynamodb_table = "lab6-bessarab-tf-lockid"
+  }
+
+
 # Configure the AWS provider
 provider "aws" {
   region     = "eu-central-1"
