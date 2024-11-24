@@ -54,6 +54,18 @@ resource "aws_instance" "webapp_instance" {
   ami           = "ami-0084a47cc718c111a"
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.web_app.id]
+
+  user_data = <<-EOF
+  #!/bin/bash
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  sudo sh get-docker.sh
+  sudo groupadd docker
+  sudo usermod -aG docker ubuntu
+  newgrp docker
+  docker pull antonbessarab/lab6-7:latest
+  docker run -id antonbessarab/lab6-7:latest
+  EOF
+
   tags = {
     Name = "webapp_instance"
   }
