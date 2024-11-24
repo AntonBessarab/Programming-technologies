@@ -55,6 +55,8 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v6
       with:
+        context: ./Lab6
+        file: ./Lab6/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/lab6-7:latest
 
