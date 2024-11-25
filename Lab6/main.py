@@ -41,7 +41,7 @@ def clear_orders() -> bool:
 
 def menu() -> None:
     while True:
-        print("\n=== Order Management Menu ===")
+        print("\n***=== Order Management Menu ===***")
         print("1. Add product to queue")
         print("2. Get first product from queue")
         print("3. See all order")
